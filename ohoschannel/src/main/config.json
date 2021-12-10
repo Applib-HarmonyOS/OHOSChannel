@@ -1,0 +1,25 @@
+{
+  "app": {
+    "bundleName": "kr.pe.burt.ohos.lib.ohos.channel.app",
+    "vendor": "pe",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {
+  },
+  "module": {
+    "package": "kr.pe.burt.ohos.lib.ohoschannel",
+    "deviceType": [
+      "phone",
+      "tablet",
+      "tv"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "ohoschannel",
+      "moduleType": "har"
+    }
+  }
+}

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AndroidChannel.iml" filepath="$PROJECT_DIR$/AndroidChannel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/androidchannel/androidchannel.iml" filepath="$PROJECT_DIR$/androidchannel/androidchannel.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/OHOSChannel.iml" filepath="$PROJECT_DIR$/.idea/modules/OHOSChannel.iml" group="OHOSChannel" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/entry/entry.iml" filepath="$PROJECT_DIR$/.idea/modules/entry/entry.iml" group="OHOSChannel/entry" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ohoschannel/ohoschannel.iml" filepath="$PROJECT_DIR$/.idea/modules/ohoschannel/ohoschannel.iml" group="OHOSChannel/ohoschannel" />
     </modules>
   </component>
 </project>

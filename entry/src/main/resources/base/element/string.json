@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "entry_MainAbility",
+      "value": "OHOSChannel"
+    },
+    {
+      "name": "mainability_description",
+      "value": "OHOSChannel is helper library for inter thread communication between main thread and worker thread"
+    },
+    {
+      "name": "count",
+      "value": "Count"
+    }
+  ]
+}
