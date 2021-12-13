@@ -60,7 +60,7 @@ channel.toUi().sendEvent(PING);
 
 ### Timer
 
-If you use OHOSChannel, You can make Timer more easily. I already made Timer class for you. You can just use it. If you want to know how to implement Timer class, you just read [souce code](ohoschannel/src/main/java/kr/pe/burt/ohos/lib/ohoschannel/Timer.java) in the package.
+If you use OHOSChannel, You can make Timer more easily. I already made Timer class for you. You can just use it. If you want to know how to implement Timer class, you just read [source code](ohoschannel/src/main/java/kr/pe/burt/ohos/lib/ohoschannel/Timer.java) in the package.
 
 ```java
 timer = new Timer(1000, new Timer.OnTimer() {
