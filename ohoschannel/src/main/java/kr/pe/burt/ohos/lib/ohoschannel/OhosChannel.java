@@ -97,7 +97,7 @@ public class OhosChannel {
      * Close channel.
      */
     public void close() {
-        if (isChannelOpened) {
+        if (!isChannelOpened) {
             return;
         }
         mainThreadHandler.removeAllEvent();

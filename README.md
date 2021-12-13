@@ -7,7 +7,7 @@ Inspired by [skyfe79/AndroidChannel](https://github.com/skyfe79/AndroidChannel)
 
 ## Feature
 This library is helper library for inter thread communication between main thread and worker thread. 
-OHOSChannel uses HandlerThread for inter thread communication.
+OHOSChannel uses EventHandler and EventRunner for inter thread communication.
 
 
 <img src="screenshots/OHOSChannel.gif" width="256">
@@ -95,8 +95,8 @@ public boolean onTouchEvent(TouchEvent event) {
  * Use open() method to open channel. If you created a channel by Channel constructor, it is automatically open the channel by default. 
 * channel.close() 
  * Use close() method to close channel. close() method removes callbacks and messages in the message queue.
-* channel.toUI() 
- * toUI() method returns main thread handler. If you want to send messages to ui thread you should use toUI() method.
+* channel.toUi() 
+ * toUi() method returns main thread handler. If you want to send messages to ui thread you should use toUi() method.
 * channel.toWorker()
  * toWorker() method returns worker thread handler. If you want to send messages to worker thread you should use toWorker() method.  
  

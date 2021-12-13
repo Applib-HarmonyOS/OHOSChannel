@@ -32,8 +32,8 @@ import kr.pe.burt.ohos.lib.ohoschannel.Timer;
  */
 public class MainAbility extends FractionAbility {
     public static final HiLogLabel HI_LOG_LABEL = new HiLogLabel(0, 0, "FractionAbility");
-    static final int PING = 0;
-    static final int PONG = 1;
+    private static final int PING = 0;
+    private static final int PONG = 1;
     Text textView;
     Text textDisplay;
     OhosChannel ohosChannel;
@@ -61,7 +61,7 @@ public class MainAbility extends FractionAbility {
             @Override
             public boolean handleUiMessage(InnerEvent msg) {
                 if (msg.eventId == PING) {
-                    HiLog.debug(HI_LOG_LABEL, " PING");
+                    HiLog.debug(HI_LOG_LABEL, "PING");
                     ohosChannel.toWorker().sendEvent(PONG, 1000);
                 }
                 return false;
@@ -70,7 +70,7 @@ public class MainAbility extends FractionAbility {
             @Override
             public boolean handleWorkerMessage(InnerEvent msg) {
                 if (msg.eventId == PONG) {
-                    HiLog.debug(HI_LOG_LABEL, " PONG");
+                    HiLog.debug(HI_LOG_LABEL, "PONG");
                     ohosChannel.toUi().sendEvent(PING, 1000);
                 }
                 return false;
@@ -101,12 +101,12 @@ public class MainAbility extends FractionAbility {
         HiLog.debug(HI_LOG_LABEL, "onTouchEvent " + event.getAction());
         if (event.getAction() == TouchEvent.PRIMARY_POINT_UP) {
             if (timer.isAlive()) {
-                textDisplay.setText("1.Touch event detected, counter stopped.");
+                textDisplay.setText("Touch event detected, counter stopped.");
                 textDisplay.setTextColor(Color.RED);
                 HiLog.debug(HI_LOG_LABEL, "onTouchEvent stop ");
                 timer.stop();
             } else {
-                textDisplay.setText("2.Touch event detected, counter resumed.");
+                textDisplay.setText("Touch event detected, counter resumed.");
                 textDisplay.setTextColor(Color.GREEN);
                 HiLog.debug(HI_LOG_LABEL, "onTouchEvent start ");
                 timer.start();
