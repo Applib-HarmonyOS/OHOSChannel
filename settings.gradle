@@ -1,1 +1,1 @@
-include ':app', ':androidchannel'
+include ':entry', ':ohoschannel'

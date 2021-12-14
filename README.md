@@ -1,60 +1,66 @@
-[![Android Gems](http://www.android-gems.com/badge/skyfe79/AndroidChannel.svg?branch=master)](http://www.android-gems.com/lib/skyfe79/AndroidChannel)
+# OHOSChannel
 
-# AndroidChannel
+OHOSChannel is helper library for inter thread communication between main thread and worker thread. 
 
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-AndroidChannel-green.svg?style=flat)](https://android-arsenal.com/details/1/2547)
+## Source
+Inspired by [skyfe79/AndroidChannel](https://github.com/skyfe79/AndroidChannel)
 
-AndroidChannel is helper library for inter thread communication between main thread and worker thread. AndroidChannel uses HandlerThread for inter thread communication.
+## Feature
+This library is helper library for inter thread communication between main thread and worker thread. 
+OHOSChannel uses EventHandler and EventRunner for inter thread communication.
 
 
+<img src="screenshots/OHOSChannel.gif" width="256">
 
-## Setup Gradle
 
+## Dependency
+1 . For using ohoschannel module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
 ```groovy
-dependencies {
-	...
-    compile 'kr.pe.burt.android.lib:androidchannel:0.0.4'
-}
+	dependencies {
+		implementation project(path: ':ohoschannel')
+                implementation fileTree(dir: 'libs', include: ['*.har'])
+                testImplementation 'junit:junit:4.13'
+	}
+```
+2 . For using ohoschannel in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
+```groovy
+	dependencies {
+		implementation fileTree(dir: 'libs', include: ['*.har'])
+		testImplementation 'junit:junit:4.13'
+	}
 ```
 
-## Example
-
-### AndroidChannel-ProgressLayout
-
-I have reimplemented [ProgressLayout](https://github.com/iammert/ProgressLayout) by using AndroidChannel for example. You can check out souce code at [AndroidChannel-ProgressLayout](example/AndroidChannel-ProgressLayout). It shows how to use AndroidChannel when you want to implement a custom animatable view.
+## Usage
 
 ### Ping-Pong 
 
 You can make a channel between main thread and worker thread easily.
-
 ```java
-channel = new AndroidChannel(new AndroidChannel.UiCallback() {
+channel = new OhosChannel(new OhosChannel.UiCallback() {
     @Override
-    public boolean handleUiMessage(Message msg) {
-
-        if(msg.what == PING) {
-            Log.d("TAG", "PING");
-            channel.toWorker().sendEmptyMessageDelayed(PONG, 1000);
+    public boolean handleUiMessage(InnerEvent msg) {
+        if (msg.eventId == PING) {
+            HiLog.debug(HI_LOG_LABEL, " PING");
+            ohosChannel.toWorker().sendEvent(PONG, 1000);
         }
         return false;
     }
-}, new AndroidChannel.WorkerCallback() {
+}, new OhosChannel.WorkerCallback() {
     @Override
-    public boolean handleWorkerMessage(Message msg) {
-
-        if(msg.what == PONG) {
-            Log.d("TAG", "PONG");
-            channel.toUI().sendEmptyMessageDelayed(PING, 1000);
+    public boolean handleWorkerMessage(InnerEvent msg) {
+        if (msg.eventId == PONG) {
+            HiLog.debug(HI_LOG_LABEL, " PONG");
+            ohosChannel.toUi().sendEvent(PING, 1000);
         }
         return false;
     }
 });
-channel.toUI().sendEmptyMessage(PING);
+channel.toUi().sendEvent(PING);
 ```
 
 ### Timer
 
-If you use AndroidChannel, You can make Timer more easily. I already make Timer class for you. You can just use it. If you want to know how to implement Timer class, you just read [souce code](https://github.com/skyfe79/AndroidChannel/blob/master/androidchannel/src/main/java/kr/pe/burt/android/lib/androidchannel/Timer.java) in the package.
+If you use OHOSChannel, You can make Timer more easily. I already made Timer class for you. You can just use it. If you want to know how to implement Timer class, you just read [source code](ohoschannel/src/main/java/kr/pe/burt/ohos/lib/ohoschannel/Timer.java) in the package.
 
 ```java
 timer = new Timer(1000, new Timer.OnTimer() {
@@ -69,12 +75,11 @@ timer.start();
 ```
 
 You can also stop the timer like this.
-
 ```java
 @Override
-public boolean onTouchEvent(MotionEvent event) {
-    if(event.getAction() == MotionEvent.ACTION_UP) {
-        if(timer.isAlive()) {
+public boolean onTouchEvent(TouchEvent event) {
+    if (event.getAction() == TouchEvent.PRIMARY_POINT_UP) {
+        if (timer.isAlive()) {
             timer.stop();
         } else {
             timer.start();
@@ -90,13 +95,12 @@ public boolean onTouchEvent(MotionEvent event) {
  * Use open() method to open channel. If you created a channel by Channel constructor, it is automatically open the channel by default. 
 * channel.close() 
  * Use close() method to close channel. close() method removes callbacks and messages in the message queue.
-* channel.toUI() 
- * toUI() method returns main thread handler. If you want to send messages to ui thread you should use toUI() method.
+* channel.toUi() 
+ * toUi() method returns main thread handler. If you want to send messages to ui thread you should use toUi() method.
 * channel.toWorker()
- * toWorker() method returns worker thread handler. If you want to send messages to worker thread you should use toWorker() method.    	
-
-## MIT License
-
+ * toWorker() method returns worker thread handler. If you want to send messages to worker thread you should use toWorker() method.  
+ 
+## License
 The MIT License
 
 Copyright © 2015 Sungcheol Kim, http://github.com/skyfe79/AndroidChannel

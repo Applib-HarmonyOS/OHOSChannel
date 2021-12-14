@@ -1,0 +1,48 @@
+{
+  "app": {
+    "bundleName": "kr.pe.burt.ohos.lib.ohos.channel.app",
+    "vendor": "pe",
+    "version": {
+      "code": 1000000,
+      "name": "1.0.0"
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "kr.pe.burt.ohos.lib.ohos.channel.app",
+    "name": ".MyApplication",
+    "mainAbility": "kr.pe.burt.ohos.lib.ohos.channel.app.MainAbility",
+    "deviceType": [
+      "phone",
+      "tablet",
+      "tv"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry",
+      "installationFree": false
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "name": "kr.pe.burt.ohos.lib.ohos.channel.app.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "$string:entry_MainAbility",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+<DependentLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:bottom_padding="$float:vertical_margin"
+    ohos:orientation="horizontal"
+    ohos:center_in_parent="true"
+    ohos:start_padding="$float:horizontal_margin"
+    ohos:end_padding="$float:horizontal_margin"
+    ohos:top_padding="$float:vertical_margin">
+
+    <Text
+        ohos:id="$+id:textView"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text_size="50fp"
+        ohos:horizontal_center="true"
+        ohos:bottom_margin="30vp"
+        ohos:text="$string:count"/>
+
+    <Text
+        ohos:id="$+id:textdisplay"
+        ohos:height="match_content"
+        ohos:width="match_content"
+        ohos:text_size="40fp"
+        ohos:multiple_lines="true"
+        ohos:horizontal_center="true"
+        ohos:truncation_mode="auto_scrolling"
+        ohos:bottom_margin="30vp"
+        ohos:below="$id:textView"
+        />
+<!--    ohos:text="on Touch:"-->
+</DependentLayout>
