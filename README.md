@@ -1,3 +1,5 @@
+[![.github/workflows/main.yml](https://github.com/applibgroup/OHOSChannel/actions/workflows/main.yml/badge.svg)](https://github.com/applibgroup/OHOSChannel/actions/workflows/main.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=applibgroup_OHOSChannel&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=applibgroup_OHOSChannel)
 # OHOSChannel
 
 OHOSChannel is helper library for inter thread communication between main thread and worker thread. 
@@ -14,7 +16,7 @@ OHOSChannel uses EventHandler and EventRunner for inter thread communication.
 
 
 ## Dependency
-1 . For using ohoschannel module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
+1. For using ohoschannel module in sample app, include the source code and add the below dependencies in entry/build.gradle to generate hap/support.har.
 ```groovy
 	dependencies {
 		implementation project(path: ':ohoschannel')
@@ -22,12 +24,19 @@ OHOSChannel uses EventHandler and EventRunner for inter thread communication.
                 testImplementation 'junit:junit:4.13'
 	}
 ```
-2 . For using ohoschannel in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
+2. For using ohoschannel in separate application using har file, add the har file in the entry/libs folder and add the dependencies in entry/build.gradle file.
 ```groovy
 	dependencies {
 		implementation fileTree(dir: 'libs', include: ['*.har'])
 		testImplementation 'junit:junit:4.13'
 	}
+```
+3. For using ohoschannel from a remote repository in separate application, add the below dependencies in entry/build.gradle file.
+```groovy
+    dependencies {
+        implementation 'dev.applibgroup:ohoschannel:1.0.0'  
+        testCompile 'junit:junit:4.13'
+    }
 ```
 
 ## Usage
@@ -92,13 +101,13 @@ public boolean onTouchEvent(TouchEvent event) {
 ## APIs
 
 * channel.open()
- * Use open() method to open channel. If you created a channel by Channel constructor, it is automatically open the channel by default. 
+  * Use open() method to open channel. If you created a channel by Channel constructor, it is automatically open the channel by default. 
 * channel.close() 
- * Use close() method to close channel. close() method removes callbacks and messages in the message queue.
+  * Use close() method to close channel. close() method removes callbacks and messages in the message queue.
 * channel.toUi() 
- * toUi() method returns main thread handler. If you want to send messages to ui thread you should use toUi() method.
+  * toUi() method returns main thread handler. If you want to send messages to ui thread you should use toUi() method.
 * channel.toWorker()
- * toWorker() method returns worker thread handler. If you want to send messages to worker thread you should use toWorker() method.  
+  * toWorker() method returns worker thread handler. If you want to send messages to worker thread you should use toWorker() method.  
  
 ## License
 The MIT License
